@@ -1,0 +1,3 @@
+classdef GrafScale
+	
+end

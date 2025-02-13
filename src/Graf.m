@@ -9,7 +9,7 @@ classdef Graf
 	
 	methods
 		
-		function obj=Graf(description, conditions)
+		function obj=Graf(description, conditions, fig)
 			
 			obj.style = stuct();
 			obj.style.supertitle_font = GrafFont;
@@ -27,10 +27,19 @@ classdef Graf
 			obj.supertitle = "";
 			
 			obj.axes = [];
+			
+			% Check for optional fig to initalize with
+			if exists('fig', 'var')
+				obj.mimic(fig);
+			end
 		end
 		
 		function mimic(fig)
 			
+			% Scan over figure axes
+			for ax = fig.Children
+				obj.axes(end+1) = GrafAxis(ax);
+			end
 			
 			
 		end
